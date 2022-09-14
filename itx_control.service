@@ -1,0 +1,14 @@
+[Unit]
+Description=ITX Control
+After=wpa_supplicant.service
+Requires=wpa_supplicant.service
+
+[Service]
+Type=simple
+User=root
+Nice=19
+ExecStart={{python}} {{main.py}} itx_control_x
+ExecStop=pkill -f 'itx_control_x$'
+
+[Install]
+WantedBy=multi-user.target
